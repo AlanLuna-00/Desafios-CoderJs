@@ -1,4 +1,5 @@
-let numero1 = prompt('Ingrese su numero')
+let numero1 = parseInt(prompt('Ingrese su numero'))
+console.log(numero1)
 if (numero1 > 1000) {
     alert('Este numero es mayor a 1000')
 } else if (numero1 == 1000) {
@@ -16,7 +17,7 @@ if ((hola != '' && hola == 'hola') || hola == 'Hola') {
     alert('Error: por favor ingrese Hola')
 }
 
-let numero2 = prompt('Ingrese un numero entre 10 y 50')
+let numero2 = parseInt(prompt('Ingrese un numero entre 10 y 50'))
 if (numero2 > 10 && numero2 < 50) {
     alert('El ' + numero2 + ' esta entre 10 y 50')
 } else if (numero2 == '') {
@@ -24,5 +25,4 @@ if (numero2 > 10 && numero2 < 50) {
 } else if(numero2 < 10 || numero2 > 50) {
     alert('El ' + numero2 + ' no se encuentra entre 10 y 50')
 }
-
 
