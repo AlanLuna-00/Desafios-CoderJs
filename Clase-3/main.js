@@ -2,16 +2,16 @@
 // CALCULADORA; EL menor o igual a 0 es para que solo me pida una vez cada numero
 
 let number1 = parseInt(prompt('CALCULADORA \nIngrese el primer numero para sumar \nSolo se podra hacer una operacion'))
-for (let i = 0; i <= 0; i++) {
+for (let i = 0; i < 1; i++) {
     let number2 = parseInt(prompt('CALCULADORA \nIngrese el segundo numero para sumar \nSolo se podra hacer una operacion'))
     let suma = number1 + number2;
     alert('Su resultado es: ' + suma);
     break
 }
 
-// CAPTCHA
+//  CAPTCHA
 let captcha = parseInt(prompt('CAPTCHA \n Ingrese un numero entre 10 y 50'))
-for (let i = 0; 1 <= 1; i++) {
+for (let i = 0; i < 1; i++) {
     if (captcha > 10 && captcha < 50) {
         alert('Acceso concedido')
     } else  {
@@ -24,9 +24,10 @@ for (let i = 0; 1 <= 1; i++) {
 // LOGIN 
 
 
-let user = prompt('Ingrese se nombre de usuario \nEscribirlo en MAYUS \nEjemplo: JOSESITO \nEscriba EXIT para salir')
+let user = ''
 
 while (user.toLowerCase() != 'exit') {
+    user = prompt('Ingrese se nombre de usuario \nEscribirlo en MAYUS \nEjemplo: JOSESITO \nEscriba EXIT para salir')
     if (user.toLowerCase() == 'alan') {
         let password = prompt('Ingrese su password \nEscribirlo en MAYUS (No distingue minuscula y mayuscula) \nEjemplo: CONTRASEÑA1234')
         switch (password.toLowerCase()) {
@@ -50,6 +51,5 @@ while (user.toLowerCase() != 'exit') {
     } 
     else {
         alert('Usuario Desconocido')
-        break;
     }
 }
