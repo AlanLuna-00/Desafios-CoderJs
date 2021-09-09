@@ -6,7 +6,6 @@ for (let i = 0; i < 1; i++) {
     let number2 = parseInt(prompt('CALCULADORA \nIngrese el segundo numero para sumar \nSolo se podra hacer una operacion'))
     let suma = number1 + number2;
     alert('Su resultado es: ' + suma);
-    break
 }
 
 //  CAPTCHA
@@ -18,7 +17,6 @@ for (let i = 0; i < 1; i++) {
         alert('Acceso Denegado')
         console.log('Eres un bot, aun así te dejaremos hacer el login.')
     } 
-    break
 }
 
 // LOGIN 
