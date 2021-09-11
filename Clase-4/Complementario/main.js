@@ -15,8 +15,7 @@ const vestirPrice = 4000
 const damaPrice = 3500
 
 const addToCart = (options) => {
-    const deportivaPrice = 3000
-    switch (options) {
+        switch (options) {
         case 1:
             alert(`Zapatilla Deportiva agregada al carrito con el valor de ${deportivaPrice}`)
             cart += deportivaPrice
