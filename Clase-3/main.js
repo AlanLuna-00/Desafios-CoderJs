@@ -15,7 +15,7 @@ for (let i = 0; i < 1; i++) {
         alert('Acceso concedido')
     } else  {
         alert('Acceso Denegado')
-        console.log('Eres un bot, aun así te dejaremos hacer el login.')
+        console.log('Eres un bot, aun así te dejaremos hacer el login.')   
     } 
 }
 
