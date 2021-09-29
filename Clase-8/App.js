@@ -27,7 +27,7 @@ class Administrador {
     }
 
     agregarProducto(producto) {
-        if (this.productos.find(item => item.codigo == producto.codigo)) {
+        if (this.productos.find(i => i.id == producto.id)) {
             return 'Este producto ya fue agregado';
         } else {
             this.productos.push(producto);
