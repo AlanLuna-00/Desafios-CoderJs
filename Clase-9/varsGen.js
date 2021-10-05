@@ -1,4 +1,4 @@
-let products = [
+let models = [
     {id: 1, name: "Zapatilla Deportiva", price: 3500, stock: 120},
     {id: 2, name: "Zapato de Vestir", price: 4000, stock: 40},
     {id: 3, name: "Zapato de Dama", price: 4250, stock: 75},
@@ -7,3 +7,5 @@ let products = [
     {id: 6, name: "Bucaneras", price: 3500, stock: 135},
     
 ];
+
+const cartContainer = document.querySelector('.cartContainer')
