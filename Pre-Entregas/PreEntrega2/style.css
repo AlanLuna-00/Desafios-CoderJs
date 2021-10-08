@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* overflow: hidden; */
+}
+
+body {
+    background-color: teal;
+    scroll:auto;
+}
+
+.card {
+    margin: auto;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+#cartContainer {
+    background-color:white;
+}
+
+footer {
+    background-color:white;
+}
+
