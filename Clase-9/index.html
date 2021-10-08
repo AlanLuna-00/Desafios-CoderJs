@@ -9,15 +9,42 @@
     <title>Event0s</title>
 </head>
 <body>
+
+    <h1 class="text-center">Eventos</h1>
     <div class="container" id="container">
         <div class="productsContainer row" id="productsContainer"></div>
     </div>
-    <div class="container mx-auto row mt-5 cartContainer" id="cartContainer">
+
+
+
+
+
+
+    <div class="container mx-auto mt-5 cartContainer" id="cartContainer">
         <h2 class="display text-center">Carrito</h2>
         <hr>
+        <div class="row">
+            <div class="col-6">
+                <div class="shopping-cart-header">
+                    <h6>Producto</h6>
+                    <hr>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="shopping-cart-header">
+                    <h6 class="text-truncate">Precio</h6>
+                    <hr>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="shopping-cart-header">
+                    <h6>Cantidad</h6>
+                    <hr>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="container">
-            <div class="cart-total d-flex align-items-center mt-2 fw-bolder">
+            <div class="container cart-total d-flex align-items-center mt-2 fw-bolder">
                 <p class="me-2">Total</p>
                 <p class="ml-4 cartTotal" id="cartTotal">$0</p>
                 <!-- <div class="toast ml-auto bg-info" role="alert" aria-live="assertive" aria-atomic="true"
@@ -36,7 +63,10 @@
                 <button class="btn btn-success ml-auto comprarButton" type="button" data-toggle="modal"
                     data-target="#comprarModal">Comprar</button> -->
             </div>
-    </div>
+
+
+
+
     <footer class="container-fluid mt-5 text-center text-black-75">
         <p>Alan Luna &copy</p>
     </footer>

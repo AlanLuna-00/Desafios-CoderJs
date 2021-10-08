@@ -19,8 +19,6 @@ let acomodarPrecio = productos.sort((a, b) => {
 })
 
 
-
-
 let acomodarStock = productos.sort((a, b) => {
     if (a.stock == b.stock) {
         return 0

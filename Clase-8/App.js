@@ -14,6 +14,7 @@ class Administrador {
         this.nombre = nombre;
     }
 
+     //Funcion para agregar producto al locas storage y crear array de productos
     cargarDeposito() {
         const listadoDeProductos = JSON.parse(localStorage.getItem(`${this.nombre}`));
         
@@ -22,10 +23,11 @@ class Administrador {
         } else {
             this.productos = [];
         }
-
+        // Forma de agilizar el if
         //  this.productos = deposito ? deposito : [];
     }
 
+    //Funcion para agregar el producto, con un if que si encuentra un mismo id, no deja sumar el producto
     agregarProducto(producto) {
         if (this.productos.find(i => i.id == producto.id)) {
             return 'Este producto ya fue agregado';
@@ -34,11 +36,12 @@ class Administrador {
             return 'Producto agregado exitosamente!';
         }
     }
-
+    // Funcion para actualizar el local storage
     actualizarDeposito() {
         localStorage.setItem(`${this.nombre}`, JSON.stringify(this.productos));
     }
 
+    // Funcion para interactuar con el DOM
     mostrarProductos() {
         const section = document.createElement("section");
         section.classList.add('container')
@@ -88,7 +91,7 @@ const consultarIngresoDeProdcuto = () => prompt('¿Desea ingresar un producto? Y
 const cargarProductos = (administrador) => {
     while (consultarIngresoDeProdcuto()) {
         const id = prompt('Ingrese el ID del producto')
-        const nombre = prompt('Ingrese el nombre del producto')
+        const nombre = prompt('Ingrese el nombre del producto')  
         const precio = parseInt(prompt('Ingrese el precio del producto'))
         const stock = parseInt(prompt('Ingrese el stock del producto'))
         const producto = new Producto(id, nombre, precio, stock);

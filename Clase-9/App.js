@@ -35,16 +35,24 @@ const renderHtmlCard = (products, container) => {
             addItemToCart(itemTitle, itemPrice)
         }
         const addItemToCart = (itemTitle, itemPrice) => {
-            console.log(itemTitle, itemPrice);
+            
+            const elementsTitle = cartContainer.getElementsByClassName('.cartContentTitle')
+
+            for (let i = 0; i < elementsTitle.length; i++) {
+                if(elementsTitle[i].textContent === itemTitle) {
+                    console.log(elementsTitle[i].textContent);
+                }
+            }
+
             const cartRow = document.createElement('div')
             const cartContentContainer = `
             <div class="row cartContent" id="cartContent">
-                  <div class="col-5  ">
+                  <div class="col-6  ">
                       <div class="shopping-cart-item d-flex align-items-center h-100 border-bottom pb-2 pt-3">
                           <h6 class="shopping-cart-item-title cartContentTitle text-truncate ml-3 mb-0">${itemTitle}</h6>
                       </div>
                   </div>
-                  <div class="col-3">
+                  <div class="col-2">
                       <div class="shopping-cart-price d-flex align-items-center h-100 border-bottom pb-2 pt-3">
                           <p class="item-price mb-0 cartContentPrice">${itemPrice}</p>
                       </div>
@@ -60,6 +68,8 @@ const renderHtmlCard = (products, container) => {
             cartContainer.append(cartRow);
 
             cartRow.querySelector('.buttonDelete').addEventListener('click', removeCartItem)
+
+            cartRow.querySelector('.cartContentQuantity').addEventListener('change', quantityChange)
 
             updateCartTotalPrice();
             }
@@ -78,11 +88,16 @@ const renderHtmlCard = (products, container) => {
                     total = total + cartItemPrice * cartItemQuantity
                 })
                 cartTotal.innerHTML= `$${total}`
-                console.log(total);
+                console.log(`Actualizacion precio: ${total}`);
             }
-            function removeCartItem(event) {
+            const removeCartItem = (event) => {
                 const buttonClicked = event.target;
                 buttonClicked.closest('#cartContent').remove();
+                updateCartTotalPrice()
+            }
+            const quantityChange = (event) => {
+                const input = event.target
+                input.value <= 0 ? (input.value = 1) : null ;
                 updateCartTotalPrice()
             }
 };
