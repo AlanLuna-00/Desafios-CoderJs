@@ -20,6 +20,11 @@ const renderHtmlCard = (products, container) => {
         card.appendChild(cardBody);
         container.appendChild(card);
         }
+        
+        // const obtenerLocalStorage = () => {
+        //     let productsLS
+        //     localStorage.getItem('productos') === null ? productsLS = [] : productsLS = JSON.parse(localStorage.getItem('productos'))
+        // }
 
         const addToCartButton = document.querySelectorAll('.addToCart')
         addToCartButton.forEach((e) => {
@@ -35,21 +40,23 @@ const renderHtmlCard = (products, container) => {
             addItemToCart(itemTitle, itemPrice)
         }
         const addItemToCart = (itemTitle, itemPrice) => {
-            
-            const elementsTitle = cartContainer.getElementsByClassName('.cartContentTitle')
 
-            for (let i = 0; i < elementsTitle.length; i++) {
-                if(elementsTitle[i].textContent === itemTitle) {
-                    console.log(elementsTitle[i].textContent);
-                }
-            }
+            // const elementsTitle = cartContainer.getElementsByClassName('shopping-cart-item-title')
+
+            // for (let i = 0; i < elementsTitle.length; i++) {
+            //     if(elementsTitle[i].textContent === itemTitle) {
+            //         console.log(elementsTitle[i].textContent);
+            //     } else {
+            //         console.log('No funciona');
+            //     }
+            // }
 
             const cartRow = document.createElement('div')
             const cartContentContainer = `
             <div class="row cartContent" id="cartContent">
                   <div class="col-6  ">
                       <div class="shopping-cart-item d-flex align-items-center h-100 border-bottom pb-2 pt-3">
-                          <h6 class="shopping-cart-item-title cartContentTitle text-truncate ml-3 mb-0">${itemTitle}</h6>
+                          <h6 class="shopping-cart-item-title cartContentTitle text-truncate ml-3 mb-0" id="cartContentTitle" >${itemTitle}</h6>
                       </div>
                   </div>
                   <div class="col-2">
@@ -71,7 +78,24 @@ const renderHtmlCard = (products, container) => {
 
             cartRow.querySelector('.cartContentQuantity').addEventListener('change', quantityChange)
 
+            const guardarLocalStorage = () => {
+                products = localStorage.getItem('products')
+    
+                !products ? products = [] : products = JSON.parse(products)
+    
+                let item = {
+                    itemTitle,
+                    itemPrice
+                }
+
+                products.push(item);
+                products = JSON.stringify(products)
+                localStorage.setItem('products', products)
+            }
+            guardarLocalStorage();
+
             updateCartTotalPrice();
+
             }
             const updateCartTotalPrice = () => {
                 let total = 0
