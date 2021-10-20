@@ -8,4 +8,6 @@ let models = [
     
 ];
 
-const cartContainer = document.querySelector('.cartContainer')
+const cartContainer = $('.cartContainer')
+
+products = []

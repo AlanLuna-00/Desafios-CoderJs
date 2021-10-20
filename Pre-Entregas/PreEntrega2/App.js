@@ -1,5 +1,10 @@
 const renderHtmlCard = (products, container) => {
     container.innerHTML = "";
+    let key = 1
+    for (let i = 0; i < localStorage.length; i++) {
+        let key = localStorage.key(i)
+        key > lastStorageId ? lastStorageId = (parseInt(key)) : null
+    }
     for (const product of products) {
         const card = document.createElement("div");
         card.classList.add("card", "col-4", "mt-5", "text-center", "p-2");
@@ -11,6 +16,8 @@ const renderHtmlCard = (products, container) => {
             <p class="card-text card-price">$${product.price}</p>
             <p class="card-text card-stock">Stock Disponible: ${product.stock}</p>
        `;
+        cardBody.setAttribute('id', `${key}` )
+        cardBody.setAttribute('key', `${key++}` )
         cardBody.innerHTML = productInHtml;
         const buttonBuy = document.createElement("input");
         buttonBuy.setAttribute("type", "submit");
@@ -20,22 +27,29 @@ const renderHtmlCard = (products, container) => {
         card.appendChild(cardBody);
         container.appendChild(card);
         }
+    
         
-        // const obtenerLocalStorage = () => {
-        //     let productsLS
-        //     localStorage.getItem('productos') === null ? productsLS = [] : productsLS = JSON.parse(localStorage.getItem('productos'))
-        // }
-
         const addToCartButton = document.querySelectorAll('.addToCart')
         addToCartButton.forEach((e) => {
             e.addEventListener("click", addToCartClick)
         })
+
         function addToCartClick(event) {
             const button = event.target;
             const item = button.closest('.item')
-
+            
             const itemTitle = item.querySelector('.card-title').textContent;
             const itemPrice = item.querySelector('.card-price').textContent;
+
+            let newProduct = new Product(itemTitle, itemPrice)
+            products.push(newProduct);
+
+                if (products.length > 0) {
+                    for (const product of products) {
+                        const {id} = product
+                        localStorage.setItem(id,JSON.stringify(product))
+                    }
+                }
 
             addItemToCart(itemTitle, itemPrice)
         }
@@ -78,27 +92,16 @@ const renderHtmlCard = (products, container) => {
 
             cartRow.querySelector('.cartContentQuantity').addEventListener('change', quantityChange)
 
-            const guardarLocalStorage = () => {
-                products = localStorage.getItem('products')
-    
-                !products ? products = [] : products = JSON.parse(products)
-    
-                let item = {
-                    itemTitle,
-                    itemPrice
-                }
-
-                products.push(item);
-                products = JSON.stringify(products)
-                localStorage.setItem('products', products)
-            }
-            guardarLocalStorage();
+            // const guardarLocalStorage = () => {
+                
+            // }
 
             updateCartTotalPrice();
 
             }
+            let total;
             const updateCartTotalPrice = () => {
-                let total = 0
+                total = 0
                 const cartTotal = document.querySelector('#cartTotal');
 
                 const cartContent = document.querySelectorAll('#cartContent')
@@ -124,6 +127,18 @@ const renderHtmlCard = (products, container) => {
                 input.value <= 0 ? (input.value = 1) : null ;
                 updateCartTotalPrice()
             }
+
+            // Animaciones Jquery
+
+            $(addToCartButton).on('click', () => {
+                $(`.card`).css('background','black', 'border', '1px solid white');
+                $('p').css('color','white')
+                $('.addToCart').css('background','white', 'color', 'black')
+                $('body').css('background','gray')
+                $('.card').slideUp('slow')
+                .delay(1300)
+                .slideDown('slow')
+            })
 };
     
 
